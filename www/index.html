@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Brotato Dressup</title>
+	<link rel="stylesheet" href="assets/reset.css">
+	<link rel="stylesheet" href="assets/style.css?ver=1">
+
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+	<link rel="manifest" href="assets/favicon/site.webmanifest">
+	<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+
+	<!-- Vue + App -->
+	<script src="https://unpkg.com/vue@3.2.47/dist/vue.global.js"></script>
+	<script type="module" src="assets/app.js?ver=1"></script>
+</head>
+<body>
+	<main id="app">
+		<div class="panels">
+
+			<!-- Left: Options -->
+			<div class="panel panel--left">
+
+				<div class="boxes" v-for="layerGroup in layersToLoop">
+					<!-- <div class="box" v-for="val, key in images[layerGroup]" :title="key" v-on:click="addLayer(layerGroup, key)"> -->
+						<!-- <img :src="getImgDir(layerGroup, key)"> -->
+					<!-- </div> -->
+
+					<div class="box"
+						v-for="val, key in images[layerGroup]"
+						v-on:click="addLayer(layerGroup, key)"
+						v-on:click.right.prevent="addBackLayer(layerGroup, key)"
+						:class="[hasLayer(layerGroup, key) ? 'box--active' : '', (showNames) ? 'box--shownames' : '']"
+						:title="key"
+						>
+						<img :src="getImgDir(layerGroup, key)">
+					</div>
+				</div>
+
+				<!-- <div class="boxes">
+					<div class="box" v-for="val, key in images.character_appearances" :title="key" v-on:click="addLayer('character_appearances', key)">
+						<img :src="getImgDir('character_appearances', key)">
+					</div>
+				</div> -->
+
+				<div class="boxes">
+
+				</div>
+			</div>
+
+			<!-- Main -->
+			<div class="panel panel--main">
+				<div class="base">
+					<div class="base__mainimg">
+						<img :src="getImgDir('base', baseKey)">
+					</div>
+
+					<div class="base__layers">
+						<div class="layer" v-for="layer in currentLayers">
+							<img :src="getImgDir(layer.group, layer.key)">
+						</div>
+					</div>
+				</div>
+
+				<div class="controls">
+					<div class="control control--undo" v-on:click="undoLayer()">UNDO</div>
+					<div class="control control--clear" v-on:click="clearLayers()">CLEAR</div>
+				</div>
+
+				<div class="controls">
+					<div class="control control--toggleNames" v-on:click="toggleNames()">Toggle Names</div>
+				</div>
+
+			</div>
+
+		</div>
+	</main>
+</body>
+</html>

@@ -1,0 +1,195 @@
+
+/* Global */
+/* ===========================================================================*/
+
+body {
+	background: linear-gradient(180deg, rgb(88, 88, 88) 0%, rgb(39, 39, 39) 100%);
+	color: #aaa;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body * {
+	box-sizing: border-box;
+}
+
+main {
+	min-height: 100vh;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Structure */
+/* ===========================================================================*/
+
+.panels {
+	/* align-items: center; */
+	display: flex;
+	justify-content: center;
+	min-height: 100vh;
+	padding: 0 20px;
+}
+
+.panel {
+	width: 50%;
+}
+
+.panel--left {
+	background-color: #333;
+}
+
+.panel--main {
+	background-color: #111;
+	max-width: 768px; /* max base img width */
+	max-height: 768px;
+	position: sticky;
+	top: 0;
+}
+
+.panel--right {
+	background-color: #333;
+}
+
+
+/* Base */
+/* ===========================================================================*/
+
+.base {
+	position: relative;
+}
+
+.base img {
+	height: auto;
+	max-width: 100%;
+}
+
+.base__layers {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.layer {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+
+/* GUI */
+/* ===========================================================================*/
+
+.boxes {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.box {
+	border: 1px solid transparent;
+	/* height: 80px; */
+	/* width: 80px; */
+	width: 10%;
+	position: relative;
+	margin-right: 2px;
+	margin-bottom: 2px;
+}
+
+@media (max-width: 1920px) { .box {width: 10%;} }
+@media (max-width: 1536px) { .box {width: 12%;} }
+@media (max-width: 1366px) { .box {width: 15%;} }
+@media (max-width: 1280px) { .box {width: 17%;} }
+@media (max-width: 1024px) { .box {width: 19%;} }
+@media (max-width:  768px) { .box {width: 21%;} }
+@media (max-width:  640px) { .box {width: 33%;} }
+@media (max-width:  414px) { .box {width: 40%;} }
+@media (max-width:  360px) { .box {width: 50%;} }
+
+.box:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background-image: url('img/base/base_no_legs.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	opacity: 0.1;
+	z-index: 1;
+}
+
+.box--shownames:after {
+	content: attr(title);
+	font-size: 12px;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.box img {
+	position: relative;
+	z-index: 2;
+}
+
+.box:hover {
+	border: 1px dashed rgba(194, 194, 83, 0.6);
+	cursor: pointer;
+}
+
+.box--active {
+	border: 1px solid rgba(255, 166, 0, 0.5) !important;
+}
+
+.box--active:hover {
+	border: 1px dashed rgba(201, 48, 48, 1) !important;
+}
+
+
+/* Controls */
+/* ===========================================================================*/
+
+.controls {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	flex-wrap: wrap;
+}
+
+.control {
+	background-color: black;
+	border-radius: 3px;
+	border: 1px solid rgba(255, 255, 255, 0.6);
+	color: white;
+	padding: 10px;
+	margin: 0 15px 10px;;
+}
+
+.control:hover {
+	cursor: pointer;
+}
+
+.control--clear {
+	background-color: rgba(169, 68, 68, 0.5);
+}
+
+.control--clear:hover {
+	background-color: rgba(169, 68, 68, 1);
+}
+
+.control--undo {
+	background-color: rgba(167, 126, 49, 0.5);
+}
+
+.control--undo:hover {
+	background-color: rgba(167, 126, 49, 1);
+}
