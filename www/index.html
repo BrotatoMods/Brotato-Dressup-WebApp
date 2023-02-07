@@ -58,7 +58,7 @@
 			</div>
 
 			<!-- Main -->
-			<div class="panel panel--main">
+			<div class="panel panel--main" :class="'bg-' + currentBg">
 				<div class="base">
 					<div class="base__mainimg">
 						<img :src="getImgDir('base', baseKey)">
@@ -74,10 +74,13 @@
 				<div class="controls">
 					<div class="control control--undo" v-on:click="undoLayer()">UNDO</div>
 					<div class="control control--clear" v-on:click="clearLayers()">CLEAR</div>
+					<div class="control control--toggleNames" v-on:click="toggleNames()">Toggle Names</div>
 				</div>
 
-				<div class="controls">
-					<div class="control control--toggleNames" v-on:click="toggleNames()">Toggle Names</div>
+				<div class="controls controls--backgrounds">
+					<div v-for="num in backgroundsCount" class="control control--bgbtn" v-on:click="applyBackground(num)" :class="['bg-' + num, ( currentBg === num ) ? 'control--active' : '']">
+						{{ num }}
+					</div>
 				</div>
 
 			</div>

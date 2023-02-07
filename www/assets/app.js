@@ -21,6 +21,10 @@ createApp({
 			],
 
 			showNames: false,
+
+			backgroundsCount: 9,
+
+			currentBg: 1,
 		}
 	},
 	computed:
@@ -89,7 +93,11 @@ createApp({
 
 		hasLayer(group, key) {
 			return ( this.getLayerIndex(group, key) !== -1 );
-		}
+		},
+
+		applyBackground(num) {
+			this.currentBg = num;
+		},
 
 	}
 }).mount('#app');

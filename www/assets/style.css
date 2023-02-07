@@ -43,13 +43,46 @@ img {
 .panel--main {
 	background-color: #111;
 	max-width: 768px; /* max base img width */
-	max-height: 768px;
+	/* max-height: 768px; */
 	position: sticky;
 	top: 0;
+	height: 100vh;
 }
 
 .panel--right {
 	background-color: #333;
+}
+
+
+/* Backgrounds */
+/* ===========================================================================*/
+
+.bg-1 {
+	background-color: #111;
+}
+.bg-2 {
+	background-color: #786758;
+}
+.bg-3 {
+	background-color: #505D5C;
+}
+.bg-4 {
+	background-color: #646464;
+}
+.bg-5 {
+	background-color: #796461;
+}
+.bg-6 {
+	background-color: #584E42;
+}
+.bg-7 {
+	background-color: #444444;
+}
+.bg-8 {
+	background-color: white;
+}
+.bg-9 {
+	background-color: black;
 }
 
 
@@ -108,7 +141,7 @@ img {
 @media (max-width:  768px) { .box {width: 21%;} }
 @media (max-width:  640px) { .box {width: 33%;} }
 @media (max-width:  414px) { .box {width: 40%;} }
-@media (max-width:  360px) { .box {width: 50%;} }
+@media (max-width:  360px) { .box {width: calc(50% - 4px);} }
 
 .box:before {
 	content: '';
@@ -166,12 +199,12 @@ img {
 }
 
 .control {
-	background-color: black;
 	border-radius: 3px;
 	border: 1px solid rgba(255, 255, 255, 0.6);
 	color: white;
+	margin: 0 15px 10px;
 	padding: 10px;
-	margin: 0 15px 10px;;
+	text-align: center;
 }
 
 .control:hover {
@@ -192,4 +225,33 @@ img {
 
 .control--undo:hover {
 	background-color: rgba(167, 126, 49, 1);
+}
+
+.control--toggleNames {
+	background-color: black;
+}
+
+.control--bgbtn {
+	border-radius: 100%;
+	padding: 2px;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	padding: 0;
+	margin: 0 4px 5px;
+}
+
+.control--bgbtn.bg-8 {
+	color: black;
+}
+
+.control--bgbtn:hover,
+.control--bgbtn.control--active {
+	color: rgba(255, 255, 255, 0.4);
+}
+
+/*fixes for white*/
+.bg-8.control--bgbtn:hover,
+.bg-8.control--bgbtn.control--active {
+	color: rgba(0, 0, 0, 0.4);
 }
